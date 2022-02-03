@@ -1,3 +1,4 @@
+//-----------Déplacement du canard---------//
 var vitesse = 27;
 var canard = document.querySelector('#canard');
 
@@ -40,7 +41,7 @@ document.addEventListener('keydown', function(event) {
   canard.style.top = top + 'px';
   canard.style.left = left + 'px';
 });
-//---------------------------------//
+//---------------Le timer-----------------//
 
 var time= document.querySelector('#temps');
 function compter() {
@@ -74,7 +75,7 @@ setTimeout(function() {
 duck.removeEventListener('keydown', compteur);
 }, 120000);
 
-//-------------------------------------//
+//-------------------Score du Chasseur------------------//
 var cible = document.querySelector('#canard'); 
 var chasseur= document.querySelector('#chasseur');
  var nombre= 0; 
@@ -84,3 +85,18 @@ var chasseur= document.querySelector('#chasseur');
  function updateDisplay(val){
    chasseur.innerHTML = val;
  }
+
+ //------------------Score du Canard----------------------//
+ var decompt = document.querySelector('#canar');
+ 
+function scoreCanard() {
+  var score = 0;
+  return setInterval(function(){
+    score++;
+    decompt.innerHTML = score;
+  }, 10000);
+}
+var scoreC = scoreCanard(); 
+setTimeout(function() {
+  clearInterval(scoreC);
+}, 120000);

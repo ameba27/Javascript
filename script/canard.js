@@ -41,7 +41,7 @@ document.addEventListener('keydown', function(event) {
   canard.style.left = left + 'px';
 });
 //---------------------------------//
-var duck= document.querySelector('#canard');
+
 var time= document.querySelector('#temps');
 function compter() {
   var faire = 0;
@@ -60,16 +60,27 @@ setTimeout(function() {
 },120000)
 
 //---------------------------------//
-  
+ var duck= document.querySelector('#canard');
 
  function compteur(event) {
   console.log(event);
   
  
 }
-document.addEventListener('keydown', compteur);
+duck.addEventListener('keydown', compteur);
 
 setTimeout(function() {
 
-document.removeEventListener('keydown', compteur);
+duck.removeEventListener('keydown', compteur);
 }, 120000);
+
+//-------------------------------------//
+var cible = document.querySelector('#canard'); 
+var chasseur= document.querySelector('#chasseur');
+ var nombre= 0; 
+ function cliquer(){
+   updateDisplay(++nombre);
+ }
+ function updateDisplay(val){
+   chasseur.innerHTML = val;
+ }

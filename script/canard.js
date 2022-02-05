@@ -1,11 +1,13 @@
 //-----------Déplacement du canard---------//
-var vitesse = 27;
+
 var canard = document.querySelector('#canard');
+btnNew = document.querySelector('#button');
+var vitesse = 27;
 
 canard.style.top = '0px';
 canard.style.left = '0px';
 
-document.addEventListener('keydown', function(event) {
+document.addEventListener('keydown', function movingDuck(event) {
 
   var top = parseInt(canard.style.top);
   var left = parseInt(canard.style.left);
@@ -37,9 +39,11 @@ document.addEventListener('keydown', function(event) {
         top = 500;
     }
   }
-
-  canard.style.top = top + 'px';
-  canard.style.left = left + 'px';
+  
+    canard.style.top = top + 'px';
+    canard.style.left = left + 'px';
+   
+  
 });
 //---------------Le timer-----------------//
 
@@ -60,19 +64,21 @@ setTimeout(function() {
   
 },120000)
 
-//---------------------------------//
- var duck= document.querySelector('#canard');
+//----------------Retour(du canard) au point de départ----------------//
 
- function compteur(event) {
+
+ function movingDuck(event) {
   console.log(event);
+  document.addEventListener('keydown', movingDuck);
   
- 
 }
-duck.addEventListener('keydown', compteur);
+
 
 setTimeout(function() {
+  canard.style.top =0 + 'px';
+  canard.style.left = 0 + 'px';
+  document.removeEventListener('keydown', movingDuck );
 
-duck.removeEventListener('keydown', compteur);
 }, 120000);
 
 //-------------------Score du Chasseur------------------//
@@ -100,3 +106,24 @@ var scoreC = scoreCanard();
 setTimeout(function() {
   clearInterval(scoreC);
 }, 120000);
+
+//-------Le bouton de réinitialisation-----//
+
+btnNew.addEventListener('click', function() {
+  canard.style.top =0 + 'px';
+  canard.style.left = 0 + 'px';
+
+  var ptCanard = scoreCanard();
+  var timer = compter();
+  timer = 0;
+  ptCanard = 0;
+
+   document.addEventListener('keydown', movingDuck );
+  duck.addEventListener('click', cliquer);
+
+  setTimeout(function(){
+  document.removeEventListener('keydown', movingDuck );
+  canard.removeEventListener('click', cliquer)
+ 
+  }, 120000);
+});
